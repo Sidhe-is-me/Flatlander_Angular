@@ -28,9 +28,37 @@
 
   });
 
+
+  app.controller('TabController',function (){
+   this.tab = 1;
+   this.setTab = function(selectedTab){
+     this.tab = selectedTab;
+   };
+   this.isSet = function(givenTab){
+     return this.tab == givenTab;
+   };
+
+ });
+// I can't get the templating to work inside index.html in the browser may be compatibility with chrome
+app.directive('productTitle', function(){
+  return {
+    restrict: 'E',
+    templateUrl: 'product-title.html'
+  };
+});
+
+app.directive("specs", function() {
+  return {
+    restrict: "E",
+    templateUrl: "specs.html"
+  };
+});
+
   var gems = [{
     name: 'Azurite',
     description: "Some gems have hidden qualities beyond their luster, beyond their shine... Azurite is one of those gems.",
+    canPurchace: false,
+    soldOut: true,
     shine: 8,
     price: 110.50,
     rarity: 7,
@@ -55,6 +83,8 @@
   }, {
     name: 'Bloodstone',
     description: "Origin of the Bloodstone is unknown, hence its low value. It has a very high shine and 12 sides, however.",
+    canPurchace: true,
+    soldOut: false,
     shine: 9,
     price: 22.90,
     rarity: 6,
@@ -79,6 +109,8 @@
   }, {
     name: 'Zircon',
     description: "Zircon is our most coveted and sought after gem. You will pay much to be the proud owner of this gorgeous and high shine gem.",
+    canPurchace: true,
+    soldOut: false,
     shine: 70,
     price: 1100,
     rarity: 2,

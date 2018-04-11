@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html ng-app="gemStore">
-
   <head>
     <meta charset="utf-8" />
     <title>AngularJS</title>
@@ -13,21 +12,23 @@
     <script src="app.js"></script>
     <script src="products.js"></script>
   </head>
-
+<!-- ng-controller is the directive StoreController is the controller name as is a keyword to alias StoreController to store -->
   <body ng-controller="StoreController as store">
+    <div ng-hide="store.product.soldOut">
     <!--  Store Header  -->
     <header>
       <h1 class="text-center">Flatlander Crafted Gems</h1>
-      <h2 class="text-center">– an Angular store –</h2>
+      <h2 class="text-center">– An Angular Store –</h2>
     </header>
 
     <!--  Products Container  -->
     <div class="list-group">
       <!--  Product Container  -->
-      <div class="list-group-item" ng-repeat="product in store.products | orderBy:'-price'">
-
+      <div class="list-group-item" ng-repeat="product in store.products | orderBy:'-price'" >
+        <product-title>
+        </product-title>
         <!-- $index Practice:  -->
-        <h3>Gem #{{$index + 1}}: {{product.name | uppercase}}<em class="pull-right">{{product.price | currency}}</em>
+          <button ng-show="store.product.canPurchace">Add to Cart</button>
         </h3>
 
         <!-- Image Gallery  -->
@@ -45,8 +46,8 @@
         <!-- Product Tabs  -->
         <product-tabs></product-tabs>
 
-      </div>
-    </div>
+
+
   </body>
 
 </html>
