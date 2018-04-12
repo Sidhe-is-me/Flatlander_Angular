@@ -1,7 +1,8 @@
 // Code goes here
-
 (function() {
   var app = angular.module('gemStore', ['store-directives']);
+
+
 
   app.controller('GalleryController', function() {
     this.imageIndex = 0;
@@ -11,9 +12,14 @@
     };
   });
 
-  app.controller('StoreController', function() {
-    this.products = gems;
-  });
+  app.controller('StoreController', ['$http', function($http) {
+    var store = this;
+    // this.products = gems;
+    store.products = [];
+    $http.get('/products.json').success(function(data){
+      store.products = data;
+    });
+  }]);
 
 
   app.controller("ReviewController", function(){
@@ -39,7 +45,7 @@
    };
 
  });
-// I can't get the templating to work inside index.html in the browser may be compatibility with chrome
+
 app.directive('productTitle', function(){
   return {
     restrict: 'E',
