@@ -16,3 +16,5 @@ running at `http://127.0.0.1:8080/`.
 
 It is also available here to [edit in your browser on plunkr](http://plnkr.co/edit/LXETQi?p=preview).
 
+https://flatlander-store.herokuapp.com/
+
